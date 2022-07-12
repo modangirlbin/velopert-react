@@ -15,7 +15,9 @@ function App() {
       [name]: value
     });
   };
-  const users = [
+
+  //컴포넌트 상태로서 관리하기위해 useState감쌈
+  const [users, setUsers] = useState([
     {
       id: 1,
       username: 'velopert',
@@ -31,13 +33,19 @@ function App() {
       username: 'liz',
       email: 'liz@example.com'
     }
-  ];
+  ]);
+
+  // push, splice, sort등을 사용해서는 안됨, 배열의 불변성 유지
+
 
   const nextId = useRef(4);
   const onCreate = () => {
-    // 나중에 구현 할 배열에 항목 추가하는 로직
-    // ...
-
+    const user ={
+      id: nextId.current,
+      username,
+      email
+    }
+    setUsers([...users, user])
     setInputs({
       username: '',
       email: ''
